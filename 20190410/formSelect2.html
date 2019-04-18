@@ -43,6 +43,9 @@ else if(obj.value == "코어i9-8세대") var k = name_e;
     target.appendChild(opt);
   }
 }
+function nameif(frm){
+  document.getElementById("aa").innerHTML="선택하신 " + frm.value + "입니다." ;
+}
 </script>
 </head>
 <body>
@@ -61,7 +64,12 @@ else if(obj.value == "코어i9-8세대") var k = name_e;
 <select id ="b"name="bb"onchange ="brand2(this)" >
 <option selected>cpu</option></select>
 <label for ="b">SSD용량</label>
-<select id ="e" name="ee">
+<select id ="e" name="ee" onchange="nameif(this)">
 <option selected>SSD용량</option></select>
 <button type="submit">등록</button>
-</fieldset></section></body></html>
+</fieldset>
+<fieldset>
+  <legend>결과</legend>
+    <p id="aa"> </p>
+</fieldset>
+</section></body></html>
