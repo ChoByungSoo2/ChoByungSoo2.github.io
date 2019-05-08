@@ -4,24 +4,47 @@
     <meta charset="utf-8"/>
     <meta name="viewport"content="width=device-width, initial-scale=1"/>
 <style>
-@import "compass";
-*, *:after, *:before{
-  @include box-sizing(border-box);
+body { width: 1000px; margin-left:600px; margin-right: 600; }
+
+.perspectiveRight {
+  -webkit-animation-name: perspectiveRight;
+  animation-name: perspectiveRight;
 }
-p { width: 600px; margin-left:300px; margin-right: auto; }
-#model{
-      @include transition(.3s ease-in);
+@-webkit-keyframes perspectiveRight {
+  0% {
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: perspective(800px) rotateY(0deg);
+    transform: perspective(800px) rotateY(0deg);
+  }
+
+  100% {
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: perspective(800px) rotateY(180deg);
+    transform: perspective(800px) rotateY(180deg);
+  }
+}
+@keyframes perspectiveRight {
+  0% {
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: perspective(800px) rotateY(0deg);
+    transform: perspective(800px) rotateY(0deg);
+  }
+
+  100% {
+    -webkit-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+    -webkit-transform: perspective(800px) rotateY(180deg);
+    transform: perspective(800px) rotateY(180deg);
+  }
 }
 </style>
-<script>
-function eventonclick(){
-document.getElementById("model").src = "door2.png";
-}
-</script>
 <title>Welloe come</title>
 </head>
 <body>
-<p id = "model">
-<img src ="door.png"/>
-</p>
+<div class = "perspectiveRight" data-test="perspectiveRight">
+<img src ="https://chobyungsoo2.github.io/me/door.png"/>
+</div>
 </body></html>
