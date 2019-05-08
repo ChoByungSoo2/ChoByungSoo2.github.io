@@ -4,18 +4,24 @@
     <meta charset="utf-8"/>
     <meta name="viewport"content="width=device-width, initial-scale=1"/>
 <style>
-.subject1 {background-color:WhiteSmoke;}
-p { width: 500px; margin-left: auto; margin-right: auto; }
-#model
+@import "compass";
+*, *:after, *:before{
+  @include box-sizing(border-box);
+}
+p { width: 600px; margin-left:300px; margin-right: auto; }
+#model{
+      @include transition(.3s ease-in);
+}
 </style>
 <script>
 function eventonclick(){
-document.getElementById("image").src = "door.png";
+document.getElementById("model").src = "door2.png";
 }
 </script>
 <title>Welloe come</title>
 </head>
 <body>
-<p><img id ="image" onclick="eventonclick()" src ="door.png"/>
+<p id = "model">
+<img src ="door.png"/>
 </p>
 </body></html>
