@@ -5,13 +5,13 @@
     <meta name="viewport"content="width=device-width, initial-scale=1"/>
 <style>
 *,:after,:before{box-sizing:border-box}
-body{background:#F5F5F5;margin:50px;padding:10px;font-family:'Open Sans',sans-serif;text-align:center}
+body{background:#F5F5F5;margin:0;padding:10px;font-family:'Open Sans',sans-serif;text-align:center;position:relative;top:100px;}
 .col{display:inline-block;padding:0px}
-.card{width:200px;height:200px;margin:auto;position:relative;text-align:center;cursor:pointer}
+.card{width:195px;height:200px;margin:auto;position:relative;text-align:center;cursor:pointer}
 .card:hover{z-index:50}
 .card .material-icons{line-height:200px;font-size:50px}
 .card .f-card{width:200px;height:200px;position:<x>absolute;box-shadow:0 0 0 #eee;left:0;top:0;color:#555;background:#fff;z-index:5;transition:ease-in .9s}
-.card .b-card{width:200px;height:200px;background:#eee;color:#f53249;position:relative;overflow:hidden;box-shadow:0 0 10px #ccc inset}
+.card .b-card{width:200px;height:325px;background:#eee;color:#f53249;position:relative;overflow:hidden;box-shadow:0 0 10px #ccc inset}
 .card .b-card .material-icons{-webkit-animation:bb 1s infinite;animation:bb 1s infinite}
 #model-6 .card{-webkit-transform-style:preserve-3d;transform-style:preserve-3d}
 #model-6 .card .f-card{-webkit-transform-origin:100% 0;transform-origin:100% 0;-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
@@ -21,6 +21,7 @@ body{background:#F5F5F5;margin:50px;padding:10px;font-family:'Open Sans',sans-se
 #model-7 .card .f-card{-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:rotateY(0deg);transform:rotateY(0deg)}
 #model-7 .card .f-card img{width:100%}
 #model-7 .card:hover .f-card{box-shadow:5px 0 10px #eee;-webkit-transform:rotateY(180deg);transform:rotateY(180deg)}
+
 </style>
 <title>Welloe come</title>
 </head>
@@ -28,13 +29,14 @@ body{background:#F5F5F5;margin:50px;padding:10px;font-family:'Open Sans',sans-se
 <div class="col" id="model-7">
   <div class="card">
     <div class="f-card"><img src="https://chobyungsoo2.github.io/me/door2.png" alt=""></div>
-  <!--  <div class="b-card"><i class="material-icons">inner</i></div>-->
   </div>
+  <div class="b-card"><i class="material-icons">inner</i></div>
   </div>
   <div class="col" id="model-6">
   <div class="card">
-    <div class="f-card"><img src="https://chobyungsoo2.github.io/me/door.png" alt=""></div>
-  <!--  <div class="b-card"><i class="material-icons">inner</i></div>-->
-  </div>
-  </div>
+    <div class="f-card" id="model-6"><img src="https://chobyungsoo2.github.io/me/door.png" alt=""></div>
+</div>
+<div class="b-card"><i class="material-icons">inner</i></div>
+</div>
+  
 </body></html>
