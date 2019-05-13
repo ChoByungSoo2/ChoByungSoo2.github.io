@@ -10,8 +10,35 @@
 body{background-color:#EEEEEF; }
 .header, .footer{background-color:#E4E4e6; color:gray; padding:10px;}
 .menu ul, .banner ul{list-style-type:none;}
-.menu li{background-color:#E4E4e4; color: #848889; padding:10px; margin-bottom:10px; }
-.menu li:hover{background-color:#E4E4e8;color: #3dbd99;}
+.menu li{background-color:#f5f5f5; color: #848889; padding:10px; margin-bottom:10px; }
+.menu ul a,
+.menu ul a:link,
+.menu ul a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.menu > ul {
+  float: none;
+}
+.menu ul {
+  background: #EEEEEF;
+}
+.menu > ul > li {
+  border-left: 3px solid #d7d8da;
+}
+.menu > ul > li > a {
+  padding: 10px 20px;
+}
+.menu > ul > li:hover {
+  border-left: 3px solid #3dbd99;
+}
+.menu ul li:hover > a {
+  color: #3dbd99;
+}
+.menu > ul > li:hover {
+  background: #f6f6f6;
+}
 .banner li {background-color:#E4E4e4; color: #848889; padding:10px; margin-bottom:10px; }
 .banner li img{width:30%; vertical-align:middle;}
 /* for mobile*/
@@ -30,7 +57,7 @@ body{background-color:#EEEEEF; }
 <li>학력</li>
 <li>경력</li>
 <li>수업 수강 내역</li>
-<li>과목별 프로젝트(작품) 설명</li>
+<li><a href="https://ChoByungSoo2.github.io/me/hometext.html">과목별 프로젝트(작품) 설명</a></li>
 <li>공모전</li>
 <li>동아리</li>
 <li>봉사활동</li>
