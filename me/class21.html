@@ -9,6 +9,16 @@
 [class*="col-"]{ float:left; padding:10px;}
 body{background-color:#EEEEEF; }
 .header, .footer{background-color:#E4E4e6; color:gray; padding:10px;}
+      .header a,
+.header a:link,
+.header a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.header:hover > a {
+  color: #3dbd99;
+}
 .menu ul, .banner ul{list-style-type:none;}
 .menu li{background-color:#f5f5f5; color: #848889; padding:10px; margin-bottom:10px; }
 .menu ul a,
@@ -71,7 +81,7 @@ table{
    <title>수업 수강 내역</title>
 </head>
 <body>
-<header class="header"><h2 style="text-align:center">수업 수강 내역</h2></header>
+<header class="header"><a href="https://chobyungsoo2.github.io/me/ClassCourse.html"><h2 style="text-align:center">201X 조병수</h2></a></header>
 <div class="row"></div>
 <div id="main">
 <nav class="col-3 col-m-3 menu">
