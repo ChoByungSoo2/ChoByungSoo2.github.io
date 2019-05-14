@@ -94,9 +94,141 @@ table{
 </picture>
 </section>
 <aside class="col-3 col-m-12 banner">
+<ul><table><!doctype html>
+<html>
+<head>
+   <meta charset='utf-8'>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>  
+*{ box-sizing:border-box; padding:0; margin:0; }
+.row::after { content:""; clear:both; display: table; }
+[class*="col-"]{ float:left; padding:10px;}
+body{background-color:#EEEEEF; }
+.header, .footer{background-color:#E4E4e6; color:gray; padding:10px;}
+.menu ul, .banner ul{list-style-type:none;}
+.menu li{background-color:#f5f5f5; color: #848889; padding:10px; margin-bottom:10px; }
+.menu ul a,
+.menu ul a:link,
+.menu ul a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.menu > ul {
+  float: none;
+}
+.menu ul {
+  background: #EEEEEF;
+}
+.menu > ul > li {
+  border-left: 3px solid #d7d8da;
+}
+.menu > ul > li > a {
+  padding: 10px 20px;
+}
+.menu > ul > li:hover {
+  border-left: 3px solid #3dbd99;
+}
+.menu ul li:hover > a {
+  color: #3dbd99;
+}
+.menu > ul > li:hover {
+  background: #f6f6f6;
+}
+.banner li {background-color:#E4E4e4; color: #848889; padding:10px; margin-bottom:10px; }
+.banner li img{width:30%; vertical-align:middle;}
+/* for mobile*/
+[class*="col-"]{width:100%;}
+@media only screen and (min-width: 600px){ .col-m-3{width:25%;} .col-m-9{width:75%;} .col-m-12{width:100%;} }
+@media only screen and (min-width: 768px){.col-3{width:25%;} .col-6{width:50%;}}
+.subject1 {background-color:LavenderBlush;}
+.subject2 {background-color:LemonChiffon;}
+.subject3 {background-color:MediumAquaMarine;}
+.subject4 {background-color:LightGreen;}
+.subject5 {background-color:lightblue;}
+.subject6 {background-color:#87ceed;}
+.subject7 {background-color:pink;}
+.subject8 {background-color:lightgray;}
+.subject9 {background-color:#89c22b;}
+table, tr, th, td {
+border: 1px solid #d7d8da; border-collapse: collapse;
+text-align:center;color: #848889;
+}
+table{
+  background-color:#E4E4e4;
+}
+ th,td {
+    width: 60px;
+  }
+    tr {
+     height: 70px;
+  }
+</style>
+   <title>수업 수강 내역</title>
+</head>
+<body>
+<header class="header"><h2 style="text-align:center">수업 수강 내역</h2></header>
+<div class="row"></div>
+<div id="main">
+<nav class="col-3 col-m-3 menu">
+<ul>
+<li><a href="https://ChoByungSoo2.github.io/me/class11.html">1학년 1학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class12.html">1학년 2학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class21.html">2학년 1학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class22.html">2학년 2학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class31.html">3학년 1학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class32.html">3학년 2학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class41.html">4학년 1학기</a></li>
+<li><a href="https://chobyungsoo2.github.io/me/class42.html">4학년 2학기</a></li>
+ </ul>
+</nav>
+<section class="col-6 col-m-9">
+<picture>
+<source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
+<source media="(min-width:600px)" srcset="https://chobyungsoo2.github.io/me/main2.png">
+<img src="https://chobyungsoo2.github.io/me/main3.png" alt="lobster" style="width:auto;">
+</picture>
+</section>
+<aside class="col-3 col-m-12 banner">
 <ul><table>
 <tr>
-<th></th><th>월</th> <th>화</th> <th>수</th> <th>목</th> <th>금</th> <th>토</th> 
+<th></th><th>월</th> <th>화</th> <th>수</th> <th>목</th> <th>토</th> 
+</tr>
+<tr>
+<td><h3>1</h3></td><td class="subject1"rowspan="3">이산수학<br/>우제택<br/>24405</td><td></td><td></td><td class="subject2"rowspan="2">글쓰기기초<br/>홍인숙<br/>22226</td><td></td>
+</tr>
+<tr>
+<td><h3>2</h3></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td><h3>3</h3></td><td class="subject3"rowspan="2">영어강독<br/>하명애<br/>222223</td><td class="subject4"rowspan="2">소프트웨어<br/>디자인<br/>김홍준<br/>6423</td><td class="subject5">비전탐색<br/>우제택<br/>24123</td><td></td>
+</tr>
+<tr>
+<td><h3>4</h3></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td><h3>5</h3></td><td></td><td></td><td></td><td class="subject6"rowspan="2">현대건강요가<br/>임현선<br/>18109</td><td></td>
+</tr>
+<tr>
+<td><h3>6</h3></td><td></td><td></td><td></td><td></td>
+</tr>
+<tr>
+<td><h3>7</h3></td><td class="subject7"rowspan="3">우주와지구<br/>박충화<br/>1227</td><td></td><td></td><td></td><td class="subject8" rowspan="3">창의적문제<br/>해결전략<br/>사이버</td>
+</tr>
+<tr>
+<td><h3>8</h3></td><td></td><td></td>
+</tr>
+<tr>
+<td><h3>9</h3></td><td></td><td></td><td></td>
+</tr>
+</table></ul></aside>
+</div><div class="row"></div>
+<footer class="footer"><h4>Copyright 20XX korea.</h4></footer>
+</body>
+</html>
+
+<tr>
+<th></th><th>월</th> <th>화</th> <th>수</th> <th>목</th> <th>토</th> 
 </tr>
 <tr>
 <td><h3>1</h3></td><td class="subject1"rowspan="3">이산수학<br/>우제택<br/>24405</td><td></td><td></td><td class="subject2"rowspan="2">글쓰기기초<br/>홍인숙<br/>22226</td><td></td><td></td>
