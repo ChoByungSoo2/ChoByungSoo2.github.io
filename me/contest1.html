@@ -56,6 +56,34 @@ body{background-color:#EEEEEF; }
 @media only screen and (min-width: 600px){ .col-m-3{width:25%;} .col-m-9{width:75%;} .col-m-12{width:100%;} }
 @media only screen and (min-width: 768px){.col-3{width:25%;} .col-6{width:50%;}}
 </style>
+<script>
+function doImgPop(img){ 
+ img1= new Image(); 
+ img1.src=(img); 
+ imgControll(img); 
+} 
+  
+function imgControll(img){ 
+ if((img1.width!=0)&&(img1.height!=0)){ 
+    viewImage(img); 
+  } 
+  else{ 
+     controller="imgControll('"+img+"')"; 
+     intervalID=setTimeout(controller,20); 
+  } 
+}
+
+function viewImage(img){ 
+ W=img1.width; 
+ H=img1.height; 
+ O="width="+W+",height="+H+",scrollbars=yes"; 
+ imgWin=window.open("","",O); 
+ imgWin.document.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+ imgWin.document.write("<body topmargin=0 leftmargin=0>");
+ imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+ imgWin.document.close();
+}
+</script>
    <title>공모전</title>
 </head>
 <body>
@@ -74,11 +102,11 @@ body{background-color:#EEEEEF; }
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
 <source media="(min-width:600px)" srcset="https://chobyungsoo2.github.io/me/main2.png">
-<img src="https://chobyungsoo2.github.io/me/main3.png" alt="lobster" style="width:auto;">
+<img src="https://chobyungsoo2.github.io/me/main3.png" alt="lobster" style="width:auto;" >
 </picture>
 </section>
 <aside class="col-3 col-m-12 banner">
-<ul><img src="https://ChoByungSoo2.github.io/me/allcon_poster.png" alt="lobster" style="width:300px;"></ul></aside>
+<ul><img src="https://ChoByungSoo2.github.io/me/allcon_poster.png" alt="lobster" style="width:300px;"  onclick="doImgPop('https://ChoByungSoo2.github.io/me/allcon_poster.png')"></ul></aside>
 </div><div class="row"></div>
 <footer class="footer"><h4>Copyright 20XX korea.</h4></footer>
 </body>
