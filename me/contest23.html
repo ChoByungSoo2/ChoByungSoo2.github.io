@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset='utf-8'>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>  
+*{ box-sizing:border-box; padding:0; margin:0; }
+.row::after { content:""; clear:both; display: table; }
+[class*="col-"]{ float:left; padding:10px;}
+body{background-color:#EEEEEF; }
+.header, .footer{background-color:#E4E4e6; color:gray; padding:10px;}
+.header a,
+.header a:link,
+.header a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.header:hover > a {
+  color: #3dbd99;
+}
+.menu ul, .banner ul{list-style-type:none;}
+.menu li{background-color:#f5f5f5; color: #848889; padding:10px; margin-bottom:10px; }
+.menu ul a,
+.menu ul a:link,
+.menu ul a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.menu > ul {
+  float: none;
+}
+.menu ul {
+  background: #EEEEEF;
+}
+.menu > ul > li {
+  border-left: 3px solid #d7d8da;
+}
+.menu > ul > li > a {
+  padding: 10px 20px;
+}
+.menu > ul > li:hover {
+  border-left: 3px solid #3dbd99;
+}
+.menu ul li:hover > a {
+  color: #3dbd99;
+}
+.menu > ul > li:hover {
+  background: #f6f6f6;
+}
+.banner li {background-color:#E4E4e4; color: #848889; padding:10px; margin-bottom:10px; }
+.banner li img{width:30%; vertical-align:middle;}
+/* for mobile*/
+[class*="col-"]{width:100%;}
+@media only screen and (min-width: 600px){ .col-m-3{width:25%;} .col-m-9{width:75%;} .col-m-12{width:100%;} }
+@media only screen and (min-width: 768px){.col-3{width:20%;} .col-4{width:30%;} .col-6{width:45%;}}
+</style>
+<script>
+function doImgPop(img){ 
+ img1= new Image(); 
+ img1.src=(img); 
+ imgControll(img); 
+} 
+  
+function imgControll(img){ 
+ if((img1.width!=0)&&(img1.height!=0)){ 
+    viewImage(img); 
+  } 
+  else{ 
+     controller="imgControll('"+img+"')"; 
+     intervalID=setTimeout(controller,20); 
+  } 
+}
+function viewImage(img){ 
+ W=img1.width; 
+ H=img1.height; 
+ O="width="+W+",height="+H+",scrollbars=yes"; 
+ imgWin=window.open("","",O); 
+ imgWin.document.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+ imgWin.document.write("<body topmargin=0 leftmargin=0>");
+ imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+ imgWin.document.close();
+}
+</script>
+   <title>공모전</title>
+</head>
+<body>
+<header class="header"><a href="https://ChoByungSoo2.github.io/me/contest.html"><h2 style="text-align:center">공모전</h2></a></header>
+<div class="row"></div>
+<div id="main">
+<nav class="col-3 col-m-3 menu">
+<ul>
+<li><a href="https://ChoByungSoo2.github.io/me/contest21.html">내용</a></li>
+<li><a href="https://ChoByungSoo2.github.io/me/contest22.html">일정</a></li>
+<li><a href="https://ChoByungSoo2.github.io/me/contest23.html">지원자격</a></li>
+<li><a href="https://ChoByungSoo2.github.io/me/contest24.html">시상내역</a></li>
+ </ul>
+</nav>
+<section class="col-6 col-m-9">
+<picture>
+<a href="https://chobyungsoo2.github.io/me/main.html">
+<source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
+<source media="(min-width:600px)" srcset="https://chobyungsoo2.github.io/me/main2.png">
+<img src="https://chobyungsoo2.github.io/me/main3.png" alt="lobster" style="width:auto;">
+</a></picture>
+</section>
+<aside class="col-4 col-m-12 banner">
+<ul><li>대한민국 국민이면 누구나(개인자격으로만 참여가능)</li></ul></aside>
+</div><div class="row"></div>
+<footer class="footer"><h4>Copyright 20XX korea.</h4></footer>
+</body>
+</html>
