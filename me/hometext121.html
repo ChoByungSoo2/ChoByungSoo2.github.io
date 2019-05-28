@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset='utf-8'>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>  
+*{ box-sizing:border-box; padding:0; margin:0; }
+.row::after { content:""; clear:both; display: table; }
+[class*="col-"]{ float:left; padding:10px;}
+body{background-color:#EEEEEF; }
+.header, .footer{background-color:#E4E4e6; color:gray; padding:10px;}
+.header a,
+.header a:link,
+.header a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.header:hover > a {
+  color: #3dbd99;
+}
+.menu ul, .banner ul{list-style-type:none;}
+.menu li{background-color:#f5f5f5; color: #848889; padding:10px; margin-bottom:10px; }
+.menu ul a,
+.menu ul a:link,
+.menu ul a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.menu > ul {
+  float: none;
+}
+.menu ul {
+  background: #EEEEEF;
+}
+.menu > ul > li {
+  border-left: 3px solid #d7d8da;
+}
+.menu > ul > li > a {
+  padding: 10px 20px;
+}
+.menu > ul > li:hover {
+  border-left: 3px solid #3dbd99;
+}
+.menu ul li:hover > a {
+  color: #3dbd99;
+}
+.menu > ul > li:hover {
+  background: #f6f6f6;
+}
+.banner li {background-color:#E4E4e4; color: #848889; padding:10px; margin-bottom:10px; }
+.banner li img{width:30%; vertical-align:middle;}
+/* for mobile*/
+[class*="col-"]{width:100%;}
+@media only screen and (min-width: 600px){ .col-m-3{width:25%;} .col-m-9{width:75%;} .col-m-12{width:100%;} }
+@media only screen and (min-width: 768px){.col-3{width:20%;} .col-4{width:30%;} .col-6{width:45%;}}
+</style>
+   <title>과목별 프로젝트(작품) 설명</title>
+</head>
+<body>
+<header class="header"><a href="https://chobyungsoo2.github.io/me/hometext12.html"><h2 style="text-align:center">c언어</h2></a></header>
+<div class="row"></div>
+<div id="main">
+<nav class="col-3 col-m-3 menu">
+<ul>
+<li><a href="https://ChoByungSoo2.github.io/hometext121.html">제한사항</a></li>
+<li><a href="https://ChoByungSoo2.github.io/hometext122.html">실행창</a></li>
+ </ul>
+</nav>
+<section class="col-6 col-m-9">
+<a href="https://chobyungsoo2.github.io/me/main.html">
+<picture>
+<source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
+<source media="(min-width:600px)" srcset="https://chobyungsoo2.github.io/me/main2.png">
+<img src="https://chobyungsoo2.github.io/me/main3.png" alt="lobster" style="width:auto;">
+</picture></a>
+</section>
+<aside class="col-4 col-m-12 banner">
+<ul><li>
+- Misson : 중계기가 커버하지 못하는 집의 수 구하기<br/>
+- 사용도구 : Visual Studio<br/>
+- 제출 일시 : 2018년 12월 5일 23시 59분<br/>
+- 제출 방법 : 소스 파일(온라인 제출)<br/>
+- 채점 기준 및 배점 : <br/>
+ 10개의 테스트 케이스 (50%)<br/>
+가독성, 유지보수성, 재사용성을 고려한 설계 및 구현 (50%)<br/>
+   가독성(변수명, 함수명, 들여쓰기 등) (15%)<br/>
+   코멘트(주석) (15%)<br/>
+   함수의 적절한 사용(함수의 길이, 단위 기능) (10%)<br/>
+   조건문 및 반복문의 적절한 사용 (10%)</li></ul></aside>
+</div><div class="row">
+</div>
+<footer class="footer"><h4>Copyright 20XX korea.</h4></footer>
+</body>
+</html>
