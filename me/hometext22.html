@@ -100,6 +100,148 @@ function viewImage(img){
  </ul>
 </nav>
 <section class="col-6 col-m-9">
+#include iostream<br/>
+using namespace std;<br/>
+<br/>
+class Coin<br/>
+{<br/>
+	int m_penny, m_nickel, m_dime, m_quarter;<br/>
+	int m_dollar, m_cent;<br/>
+public:<br/>
+	Coin();<br/>
+	Coin(int quarter, int dime, int nickel, int penny);<br/>
+	Coin(int dollar, int cent);<br/>
+	bool Set_Quarter(int quarter);<br/>
+	bool Set_Dimer(int dime);<br/>
+	bool Set_Nickel(int nickel);<br/>
+	bool Set_Penny(int penny);<br/>
+	bool Set_Dollar(int dollar);<br/>
+	bool Set_Cent(int cent);<br/>
+	int Get_Penny() { return m_penny; }<br/>
+	int Get_Nickel() { return m_nickel; }<br/>
+	int Get_Dimer() { return m_dime; }<br/>
+	int Get_Quarter() { return m_quarter; }<br/>
+	int Get_Dollar() { return m_dollar; }<br/>
+	int Get_Cent() {return m_cent;}<br/>
+	void Exchange_Coin_To_Dollar();<br/>
+	void Exchange_Dollar_To_Coin();<br/>
+	void Print_Money();<br/>
+};<br/>
+Coin::Coin()<br/>
+{<br/>
+	m_penny = 1, m_nickel = 1, m_dime = 1, m_quarter = 1;<br/>
+	m_dollar = 0, m_cent = 41;<br/>
+}<br/>
+Coin::Coin(int quarter, int dime, int nickel, int penny)<br/>
+{<br/>
+	m_penny = penny, m_nickel = nickel, m_dime = dime, m_quarter = quarter;<br/>
+	Exchange_Coin_To_Dollar();<br/>
+}<br/>
+Coin::Coin(int dollar, int cent)<br/>
+{<br/>
+	m_dollar = dollar, m_cent = cent;<br/>
+	Exchange_Dollar_To_Coin();<br/>
+}<br/>
+bool Coin::Set_Quarter(int quarter) <br/>
+{<br/>
+	m_quarter = quarter;<br/>
+	if (m_quarter < 0)<br/>
+		return false;<br/>
+	else<br/>
+		return true;<br/>
+}<br/>
+bool Coin::Set_Dimer(int dime)<br/>
+{<br/>
+	m_dime = dime;<br/>
+	if (m_dime < 0)<br/>
+		return false;<br/>
+	else<br/>
+		return true;<br/>
+}<br/>
+bool Coin::Set_Nickel(int nickel)<br/>
+{<br/>
+	m_nickel = nickel;<br/>
+	if (m_nickel < 0)<br/>
+		return false;<br/>
+	else<br/>
+		return true;<br/>
+}<br/>
+bool Coin::Set_Penny(int penny)<br/>
+{<br/>
+	m_penny = penny;<br/>
+	if (m_penny < 0)<br/>
+		return false;<br/>
+	else<br/>
+		return true;<br/>
+}<br/>
+bool Coin::Set_Dollar(int dollar)<br/>
+{<br/>
+	m_dollar = dollar;<br/>
+	if (m_dollar < 0)<br/>
+		return false;<br/>
+	else<br/>
+		return true;<br/>
+}<br/>
+bool Coin::Set_Cent(int cent)<br/>
+{<br/>
+	m_cent = cent;<br<br/>
+	if (m_cent < 0)<br/>
+		return false;<br/>
+	else<br/>
+		return true;<br/>
+}<br/>
+void Coin::Exchange_Coin_To_Dollar() <br/>
+{<br/>
+	int all = 0;<br/>
+	all = m_penny + (m_nickel * 5) + (m_dime * 10) + (m_quarter * 25);<br/>
+	m_dollar = all / 100;<br/>
+	m_cent= all % 100;<br/>
+}<br/>
+void Coin::Exchange_Dollar_To_Coin() <br/>
+{<br/>
+	int all = 0;<br/>
+	all = (m_dollar*100)+ m_cent;<br/>
+	m_quarter = all/25;<br/>
+	m_dime = (all - (25 * m_quarter)) / 10;<br/>
+	m_nickel = (all - (25 * m_quarter + m_dime * 10)) / 5;<br/>
+	m_penny = all % 5;<br/>
+}<br/>
+void Coin::Print_Money()<br/>
+{<br/>
+	cout << "=====================================================" << endl;<br/>
+	cout << "코인의 갯수는 "<< m_quarter <<"쿼리, "<< m_dime <<"다임, "<< m_nickel <<"니클, "<< m_penny <<"페니 이고" << endl;<br/>
+	cout << "달러로 환산하면 "<< m_dollar <<"달라, "<< m_cent <<"센트 입니다." << endl<< endl;<br/>
+}<br/>
+int main(void)<br/>
+{<br/>
+	Coin a(4, 5, 2, 6);<br/>
+	Coin b(5, 62);<br/>
+	Coin c;<br/>
+	int d = 0, e = 0, f = 0, g = 0;<br/>
+	a.Print_Money();<br/>
+	b.Print_Money();<br/>
+	c.Print_Money();<br/>
+	a.Set_Quarter(7);<br/>
+	a.Set_Nickel(23);<br/>
+	a.Exchange_Coin_To_Dollar();<br/>
+	cout << "==============================================" << endl;<br/>
+	cout << "코인의 갯수는 " << a.Get_Quarter() << "쿼리, " << a.Get_Dimer() << "다임, " << a.Get_Nickel() << "니클, " << a.Get_Penny() << "페니 이고" << endl;<br/>
+	cout << "달러로 환산하면 " << a.Get_Dollar() << "달라, " << a.Get_Cent() << "센트 입니다." << endl << endl;<br/>
+	b.Set_Dollar(2);<br/>
+	b.Set_Cent(43);<br/>
+	b.Exchange_Dollar_To_Coin();<br/>
+	b.Print_Money();<br/>
+	cout << "동전의 개수를 순서대로 입력하세요(쿼러, 다임, 니클, 페니) : ";<br/>
+	cin >> d >> e >> f >> g;<br/>
+		while ( c.Set_Quarter(d) ==0  || c.Set_Dimer(e) == 0 || c.Set_Nickel(f) == 0 || c.Set_Penny(g) == 0 )<br/>
+		{<br/>
+			cout << "입력된 값 중에 음수가 있습니다."<<endl<<"0 이상의 값으로 동전의 개수를 순서대로 입력하세요(쿼러, 다임, 니클, 페니) : ";<br/>
+			cin >> d >> e >> f >> g;<br/>
+		}<br/>
+	c.Exchange_Coin_To_Dollar();<br/>
+	c.Print_Money();<br/>
+	return 0;<br/>
+}<br/>
 <a href="https://chobyungsoo2.github.io/me/main.html">
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
