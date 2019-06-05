@@ -100,6 +100,123 @@ function viewImage(img){
  </ul>
 </nav>
 <section class="col-6 col-m-9">
+#include iostream<br/>
+#include string<br/>
+using namespace std;<br/>
+class Employee <br/>
+{<br/>
+	string m_name, m_position;<br/>
+	int m_position_level;<br/>
+	int m_year;<br/>
+	int m_allowance;<br/>
+	int m_basic_salary[6], m_gross_salary;<br/>
+public:<br/>
+	Employee();<br/>
+	Employee(string name,string position, int year);<br/>
+	void Set_Name(string name);<br/>
+	bool Set_Position(string position);<br/>
+	void Set_Year(int year);<br/>
+	string Get_Name() {return m_name;};<br/>
+	string Get_Position() { return m_position; };<br/>
+	int Get_Year() { return m_year; };<br/>
+	int Ger_Salary() { return m_gross_salary; };<br/>
+	int Compute_Salary();<br/>
+	void Print_Result();<br/>
+};<br/>
+Employee::Employee()<br/>
+{<br/>
+	for (int i = 0; i < 6; i++)<br/>
+		m_basic_salary[i] = 2000000 + (i * 500000);<br/>
+	m_allowance = 100000;<br/>
+}<br/>
+Employee::Employee(string name, string position, int year)<br/>
+{<br/>
+	m_name = name, Set_Position(position), m_year = year;<br/>
+	for (int i = 0; i < 6; i++)<br/>
+		m_basic_salary[i] = 2000000 + (i * 500000);<br/>
+	m_allowance = 100000;<br/>
+}<br/>
+void Employee::Set_Name(string name) <br/>
+{<br/>
+	m_name = name;<br/>
+}<br/>
+bool Employee::Set_Position(string position) <br/>
+{<br/>
+	if (position == "사원")<br/>
+		m_position_level = 0;<br/>
+	else if (position == "대리")<br/>
+		m_position_level = 1;<br/>
+	else if (position == "과장")<br/>
+		m_position_level = 2;<br/>
+	else if (position == "차장")<br/>
+		m_position_level = 3;<br/>
+	else if (position == "부장")<br/>
+		m_position_level = 4;<br/>
+	else if (position == "이사")<br/>
+		m_position_level = 5;<br/>
+	else <br/>
+		m_position_level = -1;<br/>
+<br/>
+	if (m_position_level < 0)<br/>
+		return false;<br/>
+	else<br/>
+		m_position = position;<br/>
+		return true;<br/>
+}<br/>
+void Employee::Set_Year(int year) <br/>
+{<br/>
+	m_year = year;<br/>
+}<br/>
+int Employee::Compute_Salary() <br/>
+{<br/>
+	switch (m_year / 5)<br/>
+	{<br/>
+	case 0: m_allowance; break;<br/>
+	case 1: m_allowance *= 5; break;<br/>
+	case 2: m_allowance *= 10; break;<br/>
+	case 3: m_allowance *= 10; break;<br/>
+	case 4: m_allowance *= 20; break;<br/>
+	case 5: m_allowance *= 20; break;<br/>
+	default:m_allowance *= 30; break;<br/>
+	}<br/>
+	return m_gross_salary = m_basic_salary[m_position_level] + 50000 * m_year + m_allowance;<br/>
+}<br/>
+void Employee::Print_Result() <br/>
+{<br/>
+	cout << m_name << " " << m_position << "의 총 근무 년수는 " << m_year << "년입니다.\n";<br/>
+	cout << m_name << " " << m_position << "의 봉급은 " << m_gross_salary << "원입니다.\n\n";<br/>
+}<br/>
+int main(void)<br/>
+{<br/>
+	Employee a[3] = { Employee("홍길동", "과장",17),Employee("장길산","부장",23),Employee("엄꺽정","이사",34)}, *ob = new Employee;<br/>
+	Employee *oa = a;<br/>
+	for (int i = 0; i < 3; i++, oa++)<br/>
+	{<br/>
+		(*oa).Compute_Salary();<br/>
+		(*oa).Print_Result();<br/>
+	}<br/>
+	string name, position;<br/>
+	int year;<br/>
+	cout << "종업원의 이름을 입력하시요.  :";<br/>
+	cin >> name;<br/>
+	(*ob).Set_Name(name);<br/>
+	cout << "종업원의 직급을 입력하시요.  :";<br/>
+	cin >> position;<br/>
+	while ((*ob).Set_Position(position) == 0)<br/>
+	{<br/>
+		cout << "** 에러발생. 사원, 대리, 과장, 차장, 부장, 이사 중에서 입력하세요 **" << endl << endl;<br/>
+		cout<< "종업원의 직급을 입력하시요.  :";<br/>
+		cin >> position;<br/>
+	}<br/>
+	cout << "종업원의 근무 년수을 입력하시요.  :";<br/>
+	cin >> year;<br/>
+	(*ob).Set_Year(year);<br/>
+	(*ob).Compute_Salary();<br/>
+	cout <<"\n"<< (*ob).Get_Name() << " " << (*ob).Get_Position() << "의 총 근무 년수는 " << (*ob).Get_Year() << "년입니다.\n";<br/>
+	cout << (*ob).Get_Name() << " " << (*ob).Get_Position() << "의 봉급은 " << (*ob).Ger_Salary() << "원입니다.\n\n";<br/>
+	delete ob;<br/>
+	return 0;<br/>
+}<br/>
 <a href="https://chobyungsoo2.github.io/me/main.html">
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
