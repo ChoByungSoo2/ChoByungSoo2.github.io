@@ -100,6 +100,94 @@ function viewImage(img){
  </ul>
 </nav>
 <section class="col-6 col-m-9">
+#include iostream<br/>
+#include math.h<br/>
+#include string<br/>
+using namespace std;<br/>
+class CPoint {<br/>
+protected:<br/>
+	double m_x, m_y;<br/>
+public:<br/>
+	CPoint(double x, double y) { m_x = x; m_y = y; }<br/>
+	virtual double Compute_Unit() = 0;<br/>
+	virtual void Print_Point() <br/>
+	{<br/>
+		cout << "(x : " << m_x << " y : " << m_y;<br/>
+	}<br/>
+};<br/>
+class CLengthPoint :public CPoint {<br/>
+	double m_z;<br/>
+public:<br/>
+	CLengthPoint(double x, double y, double z) : CPoint(x, y) { m_z = z; }<br/>
+	double Compute_Unit();<br/>
+	void Print_Point()<br/>
+	{<br/>
+		CPoint::Print_Point();<br/>
+		cout << " z : " << m_z << ")\n";<br/>
+	}<br/>
+};<br/>
+double CLengthPoint::Compute_Unit() <br/>
+{<br/>
+	return sqrt(m_x*m_x + m_y*m_y + m_z*m_z);<br/>
+}<br/>
+class CVoulmePoint :public CPoint {<br/>
+protected:<br/>
+	double m_z;<br/>
+public:<br/>
+	CVoulmePoint(double x, double y, double z) :CPoint(x, y) { m_z = z; }<br/>
+	double Compute_Unit();<br/>
+	void Print_Point()<br/>
+	{<br/>
+		CPoint::Print_Point();<br/>
+		cout <<" z : " << m_z << ")\n";<br/>
+	}<br/>
+};<br/>
+double CVoulmePoint::Compute_Unit()<br/>
+{<br/>
+	if (m_x >= 0 && m_y >= 0 && m_z >= 0)<br/>
+		return m_x*m_y*m_z;<br/>
+	else<br/>
+		return 0;<br/>
+}<br/>
+class CAreaPoint :public CVoulmePoint {<br/>
+public:<br/>
+	CAreaPoint(double x, double y, double z) :CVoulmePoint(x,y,z) {}<br/>
+	double Compute_Unit();<br/>
+};<br/>
+double CAreaPoint::Compute_Unit()<br/>
+{<br/>
+	if (m_x >= 0 && m_y >= 0 && m_z >= 0)<br/>
+		return 2 * (m_x*m_y + m_y*m_z + m_z*m_x);<br/>
+	else<br/>
+		return 0;<br/>
+}<br/>
+int main()<br/>
+{<br/>
+	cout << fixed;<br/>
+	cout.precision(1);<br/>
+<br/>
+	CPoint *pointer;<br/>
+	CLengthPoint lengthPt(5.7, 12.5, 3.4);<br/>
+	CVoulmePoint volumePt(11.6, 4.1, 5.4);<br/>
+	CAreaPoint areaPt(3.7, 8.9, 4.5);<br/>
+	double a = 0;<br/>
+	pointer = &lengthPt;<br/>
+	cout << "객체 lengthPt의 좌표 : ";<br/>
+	pointer->Print_Point();<br/>
+	a = pointer->Compute_Unit();<br/>
+	cout << "객체 lengthPt의 원점으로부터의 거리 : " << a << endl;<br/>
+	pointer = &volumePt;<br/>
+	cout << "객체 volumePt의 좌표 : ";<br/>
+	pointer->Print_Point();<br/>
+	a = pointer->Compute_Unit();<br/>
+	cout << "객체 volumePt의 육면체 부피 : " << a << endl;<br/>
+	pointer = &areaPt;<br/>
+	cout << "객체 areaPt의 좌표 : ";<br/>
+	pointer->Print_Point();<br/>
+	a = pointer->Compute_Unit();<br/>
+	cout << "객체 areaPt의 육면체 겉넓이 : " << a << endl;<br/>
+	return 0;<br/>
+}<br/>
 <a href="https://chobyungsoo2.github.io/me/main.html">
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
