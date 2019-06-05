@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset='utf-8'>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>  
+*{ box-sizing:border-box; padding:0; margin:0; }
+.row::after { content:""; clear:both; display: table; }
+[class*="col-"]{ float:left; padding:10px;}
+body{background-color:#EEEEEF; }
+.header, .footer{background-color:#E4E4e6; color:gray; padding:10px;}
+.header a,
+.header a:link,
+.header a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.header:hover > a {
+  color: #3dbd99;
+}
+.menu ul, .banner ul{list-style-type:none;}
+.menu li{background-color:#f5f5f5; color: #848889; padding:10px; margin-bottom:10px; }
+.menu ul a,
+.menu ul a:link,
+.menu ul a:visited {
+  display: block;
+  color: #848889;
+  text-decoration: none;
+}
+.menu > ul {
+  float: none;
+}
+.menu ul {
+  background: #EEEEEF;
+}
+.menu > ul > li {
+  border-left: 3px solid #d7d8da;
+}
+.menu > ul > li > a {
+  padding: 10px 20px;
+}
+.menu > ul > li:hover {
+  border-left: 3px solid #3dbd99;
+}
+.menu ul li:hover > a {
+  color: #3dbd99;
+}
+.menu > ul > li:hover {
+  background: #f6f6f6;
+}
+.banner li {background-color:#E4E4e4; color: #848889; padding:10px; margin-bottom:10px; }
+.banner li img{width:30%; vertical-align:middle;}
+/* for mobile*/
+[class*="col-"]{width:100%;}
+@media only screen and (min-width: 600px){ .col-m-3{width:25%;} .col-m-9{width:75%;} .col-m-12{width:100%;} }
+@media only screen and (min-width: 768px){.col-3{width:20%;} .col-4{width:30%;} .col-6{width:45%;}}
+</style>
+   <title>과목별 프로젝트(작품) 설명</title>
+</head>
+<body>
+<header class="header"><a href="https://chobyungsoo2.github.io/me/hometext1.html"><h2 style="text-align:center">c언어</h2></a></header>
+<div class="row"></div>
+<div id="main">
+<nav class="col-3 col-m-3 menu">
+<ul>
+<li><a href="https://ChoByungSoo2.github.io/me/hometext121.html">제한사항</a></li>
+<li><a href="https://ChoByungSoo2.github.io/me/hometext122.html">실행창</a></li>
+<li><a href="https://ChoByungSoo2.github.io/me/hometext123.html">코드</a></li>
+ </ul>
+</nav>
+<section class="col-6 col-m-9">
+<p>#include <br/>
+char first[100][100] = { 0, };   <br/> 
+char second[100][100] = { 0, };  <br/>
+void find_S(int, int);		<br/>	 
+int change(int, int, char);	<br/>	
+int count(int, int);		<br/>	 
+int main(void)				<br/>	 
+{<br/>
+	FILE* fp = NULL;<br/>
+	int n = 0, number = 0, result = 0;<br/>
+	if((fp = fopen("sample_input.txt","r"))==NULL)<br/>
+	{<br/>
+		fprintf(stderr,"No file exist!\n");<br/>
+		return -1;<br/>
+	}<br/>
+	fscanf(fp,"%d",&n);<br/>
+	while(n-->0)<br/>
+	{<br/>
+		int rows = 0, columns = 0, zero = 0;  <br/>
+		fscanf(fp, "%d", &rows);       <br/>      
+		fscanf(fp, "%d", &columns);    <br/>      
+		find_S(rows, columns);          <br/>      
+		for (int i = 0; i < rows; i++)  <br/>
+		{<br/>
+			fscanf(fp, "%s", &first[i]);    <br/>  
+		}		 
+		for (int i = 0; i < rows; i++)<br/>
+		{<br/>
+			for (int j = 0; j < columns; j++)<br/>
+			{<br/>
+				switch (first[i][j])	<br/>
+				{<br/>
+				case 'A':					<br/>
+					change(i, j, 'A');	<br/>	
+					break;<br/>
+				case 'B':				  <br/> 
+					change(i, j, 'B');	<br/> 
+					break;<br/>
+				case 'C':				<br/> 
+					change(i, j, 'C'); <br/> 
+					break;<br/>
+				case 'X':<br/>
+					second[i][j] = 1;	<br/>
+					break;<br/>
+				}			<br/>
+			}		<br/>
+		}<br/>
+		zero = count(rows, columns);	<br/>
+		printf("%d\n", zero);<br/>
+	}<br/>
+	fclose(fp);<br/>
+	return 0;	<br/>
+}<br/>
+void find_S(int a, int b)		<br/>
+	for (int i = 0; i < a; i++)<br/>
+	{<br/>
+		for (int j = 0; j < b; j++)<br/>
+		{<br/>
+			second[i][j] = 0;<br/>
+		}<br/>
+	}<br/>
+}<br/>
+int change(int i, int j,char c) <br/>
+{<br/>
+	int range = 0;<br/>
+	switch (c)<br/>
+	{<br/>
+	case 'A':					<br/>
+		range = 3;<br/>
+		break;<br/>
+	case 'B':				<br/>
+		range = 2;
+		break; <br/>
+	case 'C':				<br/>
+		range = 1;
+		break;<br/>
+	}<br/>
+	for (int t = i - range; t <= i + range; t++)	<br/>
+	{<br/>
+		second[t][j] = 1;<br/>
+	}<br/>
+	for (int t = j - range; t <= j + range; t++)<br/>
+	{<br/>
+		second[i][t] = 1;<br/>
+	}<br/>
+}<br/>
+int count(int a, int b)	<br/>					
+{<br/>
+	int zero = 0;<br/>
+	for (int i = 0; i < a; i++) <br/>
+	{<br/>
+		for (int j = 0; j < b; j++) <br/>
+		{<br/>
+			if (second[i][j] == 0)<br/>         
+				zero++;		<br/>				
+		}<br/>
+	}<br/>
+	return zero;<br/>
+}<br/></p>
+<a href="https://chobyungsoo2.github.io/me/main.html">
+<picture>
+<source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
+<source media="(min-width:600px)" srcset="https://chobyungsoo2.github.io/me/main2.png">
+<img src="https://chobyungsoo2.github.io/me/main3.png" alt="lobster" style="width:auto;">
+</picture></a>
+</section>
+</div><div class="row"></div>
+<footer class="footer"><h4>Copyright 20XX korea.</h4></footer>
+</body>
+</html>
