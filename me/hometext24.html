@@ -100,6 +100,186 @@ function viewImage(img){
  </ul>
 </nav>
 <section class="col-6 col-m-9">
+#include iostream<br/>
+#include string<br/>
+using namespace std;<br/>
+class MyTime {<br/>
+	int m_hour;<br/>
+	int m_min;<br/>
+public:<br/>
+	MyTime(int min = 0);<br/>
+	MyTime(int hour, int min);<br/>
+	MyTime operator+(MyTime t);<br/>
+	friend MyTime operator+(MyTime t, int min);<br/>
+	MyTime operator-(int min);<br/>
+	friend MyTime operator-(MyTime t1, MyTime t2);<br/>
+	MyTime operator*(double k);<br/>
+	friend MyTime operator*(double k, MyTime t);<br/>
+	MyTime operator=(MyTime t);<br/>
+	friend int operator>(MyTime t1, MyTime t2);<br/>
+	void Print_Time(string obj);<br/>
+	friend int Compute_Total_Mins(MyTime t);<br/>
+	MyTime Make_Time_Object(int min);<br/>
+};<br/>
+MyTime::MyTime(int min) <br/>
+{<br/>
+	if (min < 0)<br/>
+	{<br/>
+		m_min = 0;<br/>
+		m_hour = 0;<br/>
+	}<br/>
+	else <br/>
+	{<br/>
+		m_hour = min / 60;<br/>
+		m_min = min % 60;<br/>
+	}<br/>
+}<br/>
+MyTime::MyTime(int hour, int min) <br/>
+{<br/>
+	if (hour < 0 || min < 0)<br/>
+	{<br/>
+		m_hour = 0;<br/>
+		m_min = 0;<br/>
+	}<br/>
+	else <br/>
+	{<br/>
+		m_hour = hour + (min / 60);<br/>
+		if ((min > 60))<br/>
+			m_min = min % 60;<br/>
+		else<br/>
+			m_min = min;<br/>
+	}<br/>
+<br/>
+}<br/>
+MyTime MyTime::operator+(MyTime t) <br/>
+{<br/>
+	MyTime temp; int a, b;<br/>
+	a=Compute_Total_Mins(*this);<br/>
+	b=Compute_Total_Mins(t);<br/>
+	return temp.Make_Time_Object(a + b);<br/>
+}<br/>
+MyTime operator+(MyTime t, int min) <br/>
+{<br/>
+	MyTime temp; int a;<br/>
+	a = Compute_Total_Mins(t);<br/>
+	return temp.Make_Time_Object(a + min);<br/>
+}<br/>
+MyTime MyTime::operator-(int min) <br/>
+{<br/>
+	MyTime temp; int a;<br/>
+	a = Compute_Total_Mins(*this);<br/>
+	if((a-min)>0)<br/>
+		return temp.Make_Time_Object(a - min);<br/>
+	else<br/>
+	{<br/>
+		temp.m_hour = 0;<br/>
+		temp.m_min = 0;<br/>
+		return temp;<br/>
+	}<br/>
+}<br/>
+MyTime operator-(MyTime t1, MyTime t2) <br/>
+{<br/>
+	MyTime temp; int a = 0, b = 0, c = 0;<br/>
+	a=Compute_Total_Mins(t1);<br/>
+	b=Compute_Total_Mins(t2);<br/>
+	if (a > b)<br/>
+		return temp.Make_Time_Object(a - b);<br/>
+	else<br/>
+	{<br/>
+		temp.m_min = 0;<br/>
+		temp.m_hour = 0;<br/>
+		return temp;<br/>
+	}<br/>
+}<br/>
+MyTime MyTime::operator*(double k) <br/>
+{<br/>
+	MyTime temp; int a;<br/>
+	a = Compute_Total_Mins(*this);<br/>
+	return temp.Make_Time_Object((int)(a * k));<br/>
+}<br/>
+MyTime operator*(double k, MyTime t) <br/>
+{<br/>
+	MyTime temp; int a;<br/>
+	a = Compute_Total_Mins(t);<br/>
+	return temp.Make_Time_Object((int)(a * k));<br/>
+}<br/>
+MyTime MyTime::operator=(MyTime t) <br/>
+{<br/>
+	m_hour = t.m_hour;<br/>
+	m_min = t.m_min;<br/>
+	return *this;<br/>
+}<br/>
+int operator>(MyTime t1, MyTime t2) <br/>
+{<br/>
+	int a = 0, b = 0;<br/>
+	a = Compute_Total_Mins(t1);<br/>
+	b = Compute_Total_Mins(t2);<br/>
+	if (a > b)<br/>
+		return 1;<br/>
+	else if (a == b)<br/>
+		return 0;<br/>
+	else<br/>
+		return -1;<br/>
+}<br/>
+void MyTime::Print_Time(string obj) <br/>
+{<br/>
+	if(m_hour>0 || m_min>0)<br/>
+	    cout << obj << " : " << m_hour << "시간 " << m_min << "분\n";<br/>
+	else<br/>
+		cout << obj << " : " << m_min << "분\n";<br/>
+}<br/>
+int Compute_Total_Mins(MyTime t) <br/>
+{<br/>
+	return (t.m_hour * 60) + t.m_min;<br/>
+}<br/>
+MyTime MyTime::Make_Time_Object(int min) <br/>
+{<br/>
+	MyTime temp;<br/>
+		temp.m_hour = m_hour + (min / 60);<br/>
+		temp.m_min = m_min +(min % 60);<br/>
+	return temp;<br/>
+}<br/>
+int main()<br/>
+{<br/>
+	MyTime ob1(135), ob2(2, 90), ob3(3, -30), result;<br/>
+	int a = 0, b = 0;<br/>
+	ob1.Print_Time("ob1");<br/>
+	ob2.Print_Time("ob2");<br/>
+	ob3.Print_Time("ob3");<br/>
+	a = Compute_Total_Mins(ob1);<br/>
+	b = Compute_Total_Mins(ob2);<br/>
+	cout << "ob1의 total mins : " << a << "분" << endl;<br/>
+	cout << "ob2의 total mins : " << b << "분" << endl;<br/>
+	result = ob1 + ob2;<br/>
+	result.Print_Time("ob1 + ob2");<br/>
+	result = ob1 + 80;<br/>
+	result.Print_Time("ob1 + 80");<br/>
+	result = ob1 - ob2;<br/>
+	result.Print_Time("ob1 - ob2");<br/>
+	result = ob2 - ob1;<br/>
+	result.Print_Time("ob2 - ob1");<br/>
+	result = ob1 - 45;<br/>
+	result.Print_Time("ob1 - 45");<br/>
+	result = ob2 * 10;<br/>
+	result.Print_Time("ob1 * ob2");<br/>
+	result = 3.75 * ob2;<br/>
+	result.Print_Time("3.75 * ob2");<br/>
+	switch (ob1>ob2)<br/>
+	{<br/>
+	case 1:cout << "ob1의 시간은 ob2보다 큽니다\n"; break;<br/>
+	case 0:cout << "ob1의 시간은 ob2와 같습니다\n"; break;<br/>
+	case -1:cout << "ob1의 시간은 ob2보다 작습니다\n"; break;<br/>
+	}<br/>
+	result = ob1 = ob2;<br/>
+	result.Print_Time("ob1 = ob2");<br/>
+	switch (ob1>ob2)<br/>
+	{<br/>
+	case 1:cout << "ob1의 시간은 ob2보다 큽니다\n"; break;<br/>
+	case 0:cout << "ob1의 시간은 ob2와 같습니다\n"; break;<br/>
+	case -1:cout << "ob1의 시간은 ob2보다 작습니다\n"; break;<br/>
+	}<br/>
+	return 0;<br/>
+}<br/>
 <a href="https://chobyungsoo2.github.io/me/main.html">
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
