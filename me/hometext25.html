@@ -100,6 +100,124 @@ function viewImage(img){
  </ul>
 </nav>
 <section class="col-6 col-m-9">
+#include iostream<br/>
+#include string<br/>
+using namespace std;<br/>
+class Employee {<br/>
+protected:<br/>
+	string m_name;<br/>
+	int m_payRate;<br/>
+	float m_hoursWorked;<br/>
+public:<br/>
+	Employee();<br/>
+	Employee(string name, int payRate, float hoursWorked);<br/>
+	void Set_Name(string name) { m_name = name; }<br/>
+	string Get_Name() { return m_name; }<br/>
+	void Set_PayRate(int payRate) { m_payRate = payRate; }<br/>
+	int Get_PayRate() { return m_payRate; }<br/>
+	void Set_HoursWorked(float hoursWorked) { m_hoursWorked = hoursWorked; }<br/>
+	float Get_HoursWorked() { return m_hoursWorked; }<br/>
+	float Compute_Salary();<br/>
+	void Print_Info();<br/>
+};<br/>
+Employee::Employee() <br/>
+{<br/>
+	m_name = "NONE";<br/>
+	m_payRate = 0;<br/>
+	m_hoursWorked = 0.0;<br/>
+}<br/>
+Employee::Employee(string name, int payRate, float hoursWorked)<br/>
+{<br/>
+	m_name = name;<br/>
+	m_payRate = payRate;<br/>
+	m_hoursWorked = hoursWorked;<br/>
+}<br/>
+float Employee::Compute_Salary() <br/>
+{<br/>
+	return m_payRate*m_hoursWorked;<br/>
+}<br/>
+void Employee::Print_Info()<br/>
+{<br/>
+	cout << "이름 : " << m_name << endl;<br/>
+	cout << "시간당 급여 : " << m_payRate << "원" << endl;<br/>
+	cout << "근무 시간 : " << m_hoursWorked << "시간" << endl;<br/>
+	cout << "총급여 : " << Compute_Salary() << "원" << endl << endl;<br/>
+}<br/>
+class Manager :public Employee <br/>
+{<br/>
+	bool m_fullTime;<br/>
+public:<br/>
+	Manager();<br/>
+	Manager(string name, int payRate, float hoursWorked, bool fullTime);<br/>
+	bool Get_FullTime() { return m_fullTime; }<br/>
+	void Set_FullTime(bool fullTime) { m_fullTime = fullTime; }<br/>
+	float Compute_Salary();<br/>
+	void Print_Info();<br/>
+};<br/>
+Manager::Manager() <br/>
+{<br/>
+	m_fullTime = true;<br/>
+}<br/>
+Manager::Manager(string name, int payRate, float hoursWorked, bool fullTime):Employee(name, payRate, hoursWorked)<br/>
+{<br/>
+		m_fullTime = fullTime;<br/>
+}<br/>
+float Manager::Compute_Salary() <br/>
+{<br/>
+	if (m_fullTime == true)<br/>
+	{<br/>
+		Set_HoursWorked(40.0);<br/>
+		return Get_PayRate()*(1.5)*Get_HoursWorked();<br/>
+	}<br/>
+	else<br/>
+		return Employee::Compute_Salary();<br/>
+}<br/>
+void Manager::Print_Info()<br/>
+{<br/>
+	cout << "이름 : " << Get_Name() << endl;<br/>
+	cout << "시간당 급여 : " << Get_PayRate() << "원" << endl;<br/>
+	if (m_fullTime == true)<br/>
+	{<br/>
+		cout << "졍규직 매니저" << endl;<br/>
+		cout << "근무시간 40시간 고정" << endl;<br/>
+	}<br/>
+	else<br/>
+	{<br/>
+		cout << "비졍규직 매니저" << endl;<br/>
+		cout << "근무 시간 : "<<Get_HoursWorked()<<"시간" << endl;<br/>
+	}<br/>
+	cout << "총급여 : " << Compute_Salary() <<"원"<< endl << endl;<br/>
+}<br/>
+int main() <br/>
+{<br/>
+	Employee ob1("장길산", 8000, 32.0);<br/>
+	Manager ob2("홍길동", 12000, 28.0, true);<br/>
+	cout << "<종업원>\n";<br/>
+	ob1.Print_Info();<br/>
+	ob1.Set_PayRate(8500);<br/>
+	ob1.Set_HoursWorked(40.0);<br/>
+	cout << "***** 종업원 PayPate 및 hours 변경 *****\n";<br/>
+	cout << "시간당 급여 : " << ob1.Get_PayRate() << "원" << endl;<br/>
+	cout << "근무 시간 : " << ob1.Get_HoursWorked() << "시간" << endl;<br/>
+	cout << "총급여 : " << ob1.Compute_Salary() << "원" << endl << endl;<br/>
+	cout << "<매니저1>\n";<br/>
+	ob2.Print_Info();<br/>
+	ob2.Set_PayRate(13500);<br/>
+	ob2.Set_HoursWorked(35.0);<br/>
+	cout << "***** 매니저 PayPate 및 hours 변경 *****\n";<br/>
+	cout << "시간당 급여 : " << ob2.Get_PayRate() << "원" << endl;<br/>
+	cout << "총급여 : " << ob2.Compute_Salary() << "원" << endl << endl;<br/>
+	cout << "<매니저2>\n";<br/>
+	Manager ob3;<br/>
+	ob3.Print_Info();<br/>
+	ob3.Set_Name("박문수");<br/>
+	ob3.Set_PayRate(12000);<br/>
+	ob3.Set_HoursWorked(25.5);<br/>
+	ob3.Set_FullTime(false);<br/>
+	cout << "***** 매니저 이름, PayPate 및 hours 변경 *****\n";<br/>
+	ob3.Print_Info();<br/>
+	return 0;<br/>
+}<br/>
 <a href="https://chobyungsoo2.github.io/me/main.html">
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
