@@ -100,6 +100,90 @@ function viewImage(img){
  </ul>
 </nav>
 <section class="col-6 col-m-9">
+#include iostream<br/>
+#include string<br/>
+using namespace std;<br/>
+void Input_Data(int *money, int *type, int *num);<br/>
+int Compute_total(int type, int num);<br/>
+char Check_Money(int total, int *money);<br/>
+void Print_Result(char selection, int total, int money, int type, int num);<br/>
+int main(void)<br/>
+{<br/>
+	int money = 0, type = 0, num = 0, total=0;<br/>
+	char selection = 0;<br/>
+	do<br/>
+	{<br/>
+		Input_Data(&money, &type, &num);<br/>
+		total = Compute_total(type, num);<br/>
+		selection = Check_Money(total, &money);<br/>
+		Print_Result(selection, total, money, type, num);<br/>
+		cout << "\n음료수를 더 뽑겠습니까? (Y/N):";<br/>
+		cin >> selection;<br/>
+		while (selection != 'y' && selection != 'Y'&& selection != 'n' && selection != 'N')<br/>
+		{<br/>
+			cout << "오직 Y,y,N,n만 입력하시오 : ";<br/>
+			cin >> selection;<br/>
+		}<br/>
+	}while (selection == 'y' || selection == 'Y');<br/>
+	cout << "이용해 주셔서 감사합니다." << endl;<br/>
+	return 0;<br/>
+}<br/>
+void Input_Data(int *money, int *type, int *num)<br/>
+{<br/>
+	cout << "=======음료 자판기===========" << endl;<br/>
+	cout << "1. 생수 : 500원  2.사이다 : 800원  3.옥수수차 : 1200원" << endl;<br/>
+	cout << "===========================" << endl;<br/>
+	cout << "돈을 넣어 주세요: ";<br/>
+	cin >> *money;<br/>
+	cout << "음료 선택 및 수량: ";<br/>
+	cin >> *type >> *num;<br/>
+}<br/>
+int Compute_total(int type, int num)<br/>
+{<br/>
+	int total = 0;<br/>
+	switch (type)<br/>
+	{<br/>
+	case 1: total = 500 * num; break;<br/>
+	case 2: total = 800 * num; break;<br/>
+	case 3: total = 1200 * num; break;<br/>
+	}<br/>
+	return total;<br/>
+}<br/>
+char Check_Money(int total, int *money)<br/>
+{<br/>
+	int  a = 0;<br/>
+	char selection = 0;<br/>
+	while (total>*money)<br/><br/>
+	{<br/>
+		cout << "금액이 " << total - *money << "원 부족합니다.돈을 더 투입하시겠습니까?(Y/N)";<br/>
+		cin >> selection;<br/>
+		while (selection != 'y' && selection != 'Y'&& selection != 'n' && selection != 'N')<br/>
+		{<br/>
+			cout << "오직 Y,y,N,n만 입력하시오 : ";<br/>
+			cin >> selection;<br/>
+		}<br/>
+		if (selection == 'n' || selection == 'N')<br/>
+		{<br/>
+			cout << "투입하신 금액이 부족하여 판매가 취소되었습니다." << endl;<br/>
+			break;<br/>
+		}<br/>
+		cout << "추가 투입금:";<br/>
+		cin >> a;<br/>
+		*money += a;<br/>
+	}<br/>
+	return selection;<br/>
+}<br/>
+void Print_Result(char selection, int total, int money, int type, int num)<br/>
+{<br/>
+	string arr[3] = { "생수","사이다","옥수수차" };<br/>
+	if (selection == 'n' || selection == 'N')<br/>
+		cout << "투입하신 돈 " << money << "원을 받으십시요" << endl;<br/>
+	else<br/>
+	{<br/>
+		cout << "현재 금액: " << money << "입니다." << endl;<br/>
+		cout << arr[type-1]  << num << "개와 잔돈 " << money - total << "을 받으십시오" << endl;<br/>
+	}<br/>
+}<br/>
 <a href="https://chobyungsoo2.github.io/me/main.html">
 <picture>
 <source media="(min-width:768px)" srcset="https://chobyungsoo2.github.io/me/main1.png">
