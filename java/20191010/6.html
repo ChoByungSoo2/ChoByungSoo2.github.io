@@ -37,26 +37,20 @@ function viewImage(img){
 <body><section><h3>Ex6_2 코드</h3>
 <div class="overx1 overy1 bk1 bdcolor no-drag">
 package org.javaro.lecture;<br/>
-
-public class Ex6_2 {<br/>
+<br/>
+public class Ex6_1 {<br/>
 <br/>
 	public static void main(String[] args) {<br/>
 		System.out.println("조병수 "+"20191010"+"-"+"함수");<br/>
-		float num= 10.0f;<br/>
-		System.out.println("num = "+num);<br/>
-		rand(num);<br/>
-		num=20.0f;<br/>
-		System.out.println("num = "+num );<br/>
-		rand(num);<br/>
-		System.out.println("num = "+num);<br/>
+		int d =sum(1,2,3);<br/>
+		System.out.println("d = "+d);<br/>
 	}<br/>
-	static void rand(float newnum) {<br/>
-		newnum = newnum + 5.0f;<br/>
-		System.out.println("new num = "+newnum);<br/>
+	static int sum(int a, int b, int c) {<br/>
+		int total = a+b+c;<br/>
+		return total;<br/>
 	}<br/>
 <br/>
 }<br/>
-<br/>
 </div>
 <h3> 실행창 </h3>
 <img class="size" src="https://chobyungsoo2.github.io/java/20191010/6.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191010/6.PNG')"><br/>
