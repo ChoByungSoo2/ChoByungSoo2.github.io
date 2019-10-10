@@ -1,22 +1,40 @@
-package org.javaro.lecture;
-
-public class Ex5_3 {
-	  public static  void main(String [] args) {
-		  System.out.println("조병수 "+"20191010"+"-"+"변수");
-	      int b00 = 8; int b01 =5; int b02 = 2; int b03 = 3; int b04 = 6;
-	      int b10 = 5; int b11=4; int b12 = 1;
-	      System.out.println("동일타입변수0="+b00+","+ b01 +","+b02 +","+b03+","+b04);
-	      System.out.println("동일타입변수1="+b10+","+ b11 +","+b12);
-	      int [][] b = new int [][] { {8,5,2,3,6},{5,4,1} };
-	      System.out.println("동일타입변수0="+b[0][0]+","+ b[0][1] +","+b[0][2] +","+b[0][3]+","+b[0][4]);
-	      System.out.println("동일타입변수1="+b[1][0]+","+ b[1][1] +","+b[1][2]);
-	      System.out.print("동일타입변수0=");
-	      for(int i=0; i <b[0].length; i++) {
-	         System.out.print(b[0][i]+"  ");  }
-	      System.out.println("");
-	      System.out.print("동일타입배열1=");
-	      for(int i=0; i <b[1].length; i++) {
-	         System.out.print(b[1][i]+" ");  }
-	     System.out.println("  ");
-	 }
+<!DOCTYPEhtml><!--1.html-->
+<html><head><meta charset="utf-8"/>
+<meta name ="viewport" content="width=device-width,initial-scale=1"/>
+  <style>
+.size { width: 97%; }
+</style>
+<title>실습</title></head>
+<script>
+function doImgPop(img){ 
+ img1= new Image(); 
+ img1.src=(img); 
+ imgControll(img); 
+} 
+  
+function imgControll(img){ 
+ if((img1.width!=0)&&(img1.height!=0)){ 
+    viewImage(img); 
+  } 
+  else{ 
+     controller="imgControll('"+img+"')"; 
+     intervalID=setTimeout(controller,20); 
+  } 
 }
+function viewImage(img){ 
+ W=img1.width; 
+ H=img1.height; 
+ O="width="+W+",height="+H+",scrollbars=yes"; 
+ imgWin=window.open("","",O); 
+ imgWin.document.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+ imgWin.document.write("<body topmargin=0 leftmargin=0>");
+ imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+ imgWin.document.close();
+}
+</script>
+<body>
+<p>소스코드 </p><br/>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191010/3.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191010/3.PNG')"><br/>
+<p>결과화면 </p><br/>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191010/3.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191010/3.PNG')"><br/>
+	</body></html>
