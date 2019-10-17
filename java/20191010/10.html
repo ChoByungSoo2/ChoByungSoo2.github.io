@@ -45,12 +45,17 @@ public class Ex6_P {
 		// TODO Auto-generated method stub
 		System.out.println("조병수 "+"20191010"+"-"+"함수숙제");
 		System.out.println("\n 화씨를 섭씨로 변환하는 함수");
-		float tempC = temp_convert(50.0f);
+		float tempC = temp_convert(70.0f);
 		System.out.println("tempC = "+tempC+" C");
 		System.out.println("\n2D 도면상 두개의 점사이 거리 구하기");
+		System.out.println("\n(0,0), (10,10)");
 		int x1,y1,x2,y2;
-		x1 = 10; y1 =20; x2 = 20; y2= 60;
+		x1 = 0; y1 =0; x2 = 10; y2= 10;
 		double c = dLength(x1,y1,x2,y2);
+		System.out.println("두 점 사이 거리는 "+c);
+		System.out.println("\n(10,15), (25,60)");
+		x1 = 10; y1 =15; x2 = 25; y2= 60;
+		c = dLength(x1,y1,x2,y2);
 		System.out.println("두 점 사이 거리는 "+c);
 	}
 	static float temp_convert(float farenheit) {
