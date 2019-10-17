@@ -2,7 +2,7 @@
 <html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
 <style>*{ padding:0; margin:0; }
 .bdcolor{border:1px solid black;}
- .overx1 {overflow-x:hidden;} .overy1 {overflow-y:scroll;}
+ .overx1 {overflow-x:scroll;} .overy1 {overflow-y:scroll;}
 .bk1{height:400px; width:94%; background-color:White;} .float1{left:50%;} .clear1{clear:both;}
 .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}.size { width: 97%; }
 </style>
@@ -36,32 +36,35 @@ function viewImage(img){
 <title>함수_실습</title></head>
 <body><section><h3>과제 코드</h3>
 <div class="overx1 overy1 bk1 bdcolor no-drag">
-package org.javaro.lecture;<br/>
-<br/>
-public class Ex6_P {<br/>
-<br/>
-	public static void main(String[] args) {<br/>
-		// TODO Auto-generated method stub<br/>
-		System.out.println("조병수 "+"20191010"+"-"+"함수숙제");<br/>
-		System.out.println("\n 화씨를 섭씨로 변환하는 함수");<br/>
-		float tempC = temp_convert(50.0f);<br/>
-		System.out.println("tempC = "+tempC+" C");<br/>
-		System.out.println("\n2D 도면상 두개의 점사이 거리 구하기");<br/>
-		int x1,y1,x2,y2;<br/>
-		x1 = 10; y1 =20; x2 = 20; y2= 60;<br/>
-		double c = dLength(x1,y1,x2,y2);<br/>
-		System.out.println("두 점 사이 거리는 "+c);<br/>
-	}<br/>
-	static float temp_convert(float farenheit) {<br/>
-		float celsius = (farenheit -32)*(5.0f/9.0f);<br/>
-		return celsius;<br/>
-	}<br/>
-	static double dLength(int x1, int y1, int x2, int y2) {<br/>
-		return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));<br/>
-	}<br/>
-}<br/>
-<br/>
+<xmp>
+package org.javaro.lecture;
+
+public class Ex6_P {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("조병수 "+"20191010"+"-"+"함수숙제");
+		System.out.println("\n 화씨를 섭씨로 변환하는 함수");
+		float tempC = temp_convert(50.0f);
+		System.out.println("tempC = "+tempC+" C");
+		System.out.println("\n2D 도면상 두개의 점사이 거리 구하기");
+		int x1,y1,x2,y2;
+		x1 = 10; y1 =20; x2 = 20; y2= 60;
+		double c = dLength(x1,y1,x2,y2);
+		System.out.println("두 점 사이 거리는 "+c);
+	}
+	static float temp_convert(float farenheit) {
+		float celsius = (farenheit -32)*(5.0f/9.0f);
+		return celsius;
+	}
+	static double dLength(int x1, int y1, int x2, int y2) {
+		return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+	}
+}
+
+</xmp>
 </div>
 <h3> 실행창 </h3>
 <img class="size" src="https://chobyungsoo2.github.io/java/20191010/10.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191010/10.PNG')"><br/>
+
 </section></body></html>
