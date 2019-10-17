@@ -1,10 +1,11 @@
-<!DOCTYPEhtml><!--1.html-->
-<html><head><meta charset="utf-8"/>
-<meta name ="viewport" content="width=device-width,initial-scale=1"/>
-  <style>
-.size { width: 97%; }
+<!DOCTYPE html><!--cssOverflow1.html-->
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
+<style>*{ padding:0; margin:0; }
+.bdcolor{border:1px solid black;}
+ .overx1 {overflow-x:scroll;} .overy1 {overflow-y:scroll;}
+.bk1{height:400px; width:94%; background-color:White;} .float1{left:50%;} .clear1{clear:both;}
+.no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}.size { width: 97%; }
 </style>
-<title>실습</title></head>
 <script>
 function doImgPop(img){ 
  img1= new Image(); 
@@ -32,9 +33,30 @@ function viewImage(img){
  imgWin.document.close();
 }
 </script>
-<body>
-<p>소스코드 </p><br/>
+<title>변수_실습</title></head>
+<body><section><h3>과제 코드</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag">
+<xmp>
+package org.javaro.lecture;
+
+public class Ex1_9 {
+	static double PI=3.141592;
+	 public static void main(String[] args) {
+	      System.out.println("조병수"+"-"+"20190919"+"-"+"변수");
+	      int r=15;
+	      System.out.println("원주율"+PI+", 반지름 "+r+"cm인 원의 둘레는 "+2*PI*r+"cm 입니다");
+	      System.out.println("2진수: "+Integer.toBinaryString(r));
+	      System.out.println("8진수: "+Integer.toOctalString(r));
+	      System.out.println("16진수: "+Integer.toHexString(r));
+	      double rd=15.3;
+	      System.out.println("원주율"+PI+", 반지름 "+r+"cm인 원의 면적은 "+r*PI*r+"cmcm 입니다");
+	   }
+
+}
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
 <img class="size" src="https://chobyungsoo2.github.io/java/20190919/9.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20190919/9.PNG')"><br/>
-<p>결과화면 </p><br/>
-<img class="size" src="https://chobyungsoo2.github.io/java/20190919/9.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20190919/9.PNG')"><br/>
-  </body></html>
+
+</section></body></html>
