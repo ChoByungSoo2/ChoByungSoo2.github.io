@@ -33,42 +33,47 @@ function viewImage(img){
  imgWin.document.close();
 }
 </script>
-<title>객체_실습</title></head>
-<body><section><h3>3각형 코드</h3>
-<div class="overx1 overy1 bk1 bdcolor no-drag">
+<title>과제</title></head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'><section>
+<h3>과제 3각형 절차</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
 <xmp>
 package org.javaro.lecture;
 
-public class P7_3 {
+public class P3_1 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println("조병수-20191016-객체");
-		System.out.println("\n3각형 면적 문제");
 		System.out.println("\n[절차 프로그램]");
 		double x, y, area;
 	    x=10;
 	    y=20;
-		area = 0.5*x*y;
+		area = x*y;
 		System.out.println("3각형 면적 = "+area);
-		
+	}
+
+}
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/13_1.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/13_1.PNG')"><br/>
+<h3>과제 3각형 함수</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class P3_2 {
+
+	public static void main(String[] args) {
+		System.out.println("조병수-20191016-객체");
 		System.out.println("\n[함수 프로그램]");
-		area = fn_area(2,x,y);
+		double x, y, area;
+	    x=10;
+	    y=20;
+		area = fn_area(1,x,y);
 		System.out.println("3각형 면적 = "+area);
-		
-		System.out.println("\n[객체 프로그램]");
-		P7_3_1 pr1 = new P7_3_1();
-		pr1.b = x;
-		pr1.c = y;
-		pr1.a = 2;
-		System.out.println("3각형 면적 = "+pr1.fn_area());
-		
-		System.out.println("\n[자바빈 프로그램]");
-		P7_3_1 pr2 = new P7_3_1();
-		pr2.setB(x); pr2.setC(y);
-		pr2.setA(2);
-		System.out.println("3각형 면적 = "+pr2.fn_area());
-		
+
 	}
 	static double fn_area(int a, double b, double c) {
 		double result = 0;
@@ -79,8 +84,73 @@ public class P7_3 {
 		}
 		return result;
 	}
+
 }
-class P7_3_1{
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/13_2.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/13_2.PNG')"><br/>
+<h3>과제 3각형 객체</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class P3_3 {
+
+	public static void main(String[] args) {
+		System.out.println("조병수-20191016-객체");
+		System.out.println("\n[객체 프로그램]");
+		double x, y, area;
+	    x=10;
+	    y=20;
+	    P3_1_1 pr1 = new  P3_1_1();
+		pr1.b = x;
+		pr1.c = y;
+		pr1.a = 2;
+		System.out.println("3각형 면적 = "+pr1.fn_area());
+
+	}
+}
+class P3_1_1{
+		int a ;
+		double b, c;
+		public double fn_area() {
+		double result = 0;
+		if(a==1) {
+			result = b*c;
+		}else if(a ==2 ) {
+			result = 0.5*b*c;
+		}
+		return result;
+	}
+}
+
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/13_3.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/13_3.PNG')"><br/>
+<h3>과제 3각형 자바빈</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class P3_4 {
+
+	public static void main(String[] args) {
+		System.out.println("조병수-20191016-객체");
+		System.out.println("\n[자바빈 프로그램]");
+		double x, y, area;
+	    x=10;
+	    y=20;
+	    P3_1_2 pr2 = new  P3_1_2();
+		pr2.setB(x); pr2.setC(y);
+		pr2.setA(2);
+		System.out.println("3각형 면적 = "+pr2.fn_area());
+	}
+}
+class P3_1_2{
 	int a ;
 	double b, c;
 	void setA(int x) {
@@ -106,5 +176,5 @@ class P7_3_1{
 </xmp>
 </div>
 <h3> 실행창 </h3>
-<img class="size" src="https://chobyungsoo2.github.io/java/20191016/13.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/13.PNG')"><br/>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/13_4.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/13_4.PNG')"><br/>
 </section></body></html>
