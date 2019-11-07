@@ -1,0 +1,60 @@
+<!DOCTYPE html><!--cssOverflow1.html-->
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
+<style>*{ padding:0; margin:0; }
+.bdcolor{border:1px solid black;}
+ .overx1 {overflow-x:scroll;} .overy1 {overflow-y:scroll;}
+.bk1{height:400px; width:94%; background-color:White;} .float1{left:50%;} .clear1{clear:both;}
+.no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}.size { width: 97%; }
+</style>
+<script>
+function doImgPop(img){ 
+ img1= new Image(); 
+ img1.src=(img); 
+ imgControll(img); 
+} 
+  
+function imgControll(img){ 
+ if((img1.width!=0)&&(img1.height!=0)){ 
+    viewImage(img); 
+  } 
+  else{ 
+     controller="imgControll('"+img+"')"; 
+     intervalID=setTimeout(controller,20); 
+  } 
+}
+function viewImage(img){ 
+ W=img1.width; 
+ H=img1.height; 
+ O="width="+W+",height="+H+",scrollbars=yes"; 
+ imgWin=window.open("","",O); 
+ imgWin.document.write("<html><head><title>:*:*:*: 이미지상세보기 :*:*:*:*:*:*:</title></head>");
+ imgWin.document.write("<body topmargin=0 leftmargin=0>");
+ imgWin.document.write("<img src="+img+" onclick='self.close()' style='cursor:pointer;' title ='클릭하시면 창이 닫힙니다.'>");
+ imgWin.document.close();
+}
+</script>
+<title>상속_실습</title></head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'><section><h3>Ex8_15 코드</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class Ex8_15 {
+	public static void main(String[] args) {
+		 System.out.println("조병수-20191107-상속");
+         WebCount1 c1 = new WebCount1();
+         WebCount1 c2 = new WebCount1();
+      }
+}
+class WebCount1 {
+	int count = 0;
+	WebCount1() {
+		this.count++;
+		System.out.println(this.count);
+	}
+}
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191107/7.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191107/7.PNG')"><br/>
+</section></body></html>
