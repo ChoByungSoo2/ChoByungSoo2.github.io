@@ -33,41 +33,109 @@ function viewImage(img){
  imgWin.document.close();
 }
 </script>
-<title>객체_실습</title></head>
-<body><section><h3>곱하기 코드</h3>
-<div class="overx1 overy1 bk1 bdcolor no-drag">
+<title>상속_실습</title></head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'><section>
+<h3>과제 곱하기 절차</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
 <xmp>
 package org.javaro.lecture;
 
-public class P7_1 {
+public class P1_1 {
+
+	public static void main(String[] args) {
+		System.out.println("조병수-20191016-객체");
+		System.out.println("\n[절차 프로그램]");
+		double x, y;
+	    x=10;
+	    y=20;
+	    System.out.println("곱하기="+x*y);
+	}
+
+}
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/11_1.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/11_1.PNG')"><br/>
+<h3>과제 곱하기 함수</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class P1_2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println("조병수-20191016-객체");
-		System.out.println("\n곱하기");
-		System.out.println("\n[절차 프로그램]");
-		double x, y, area;
+		System.out.println("\n[함수 프로그램]");
+		double x, y;
 	    x=10;
 	    y=20;
-	    System.out.println("곱하기="+x*y);
-		System.out.println("\n[함수 프로그램]");
-		System.out.println("곱하기="+mul(x,y));
-		System.out.println("\n[객체 프로그램]");
-		P7_1_1 pr1 = new P7_1_1();
-		pr1.b = x;
-		pr1.c = y;
-		System.out.println("곱하기="+pr1.mul());
-		System.out.println("\n[자바빈 프로그램]");
-		P7_1_1 pr2 = new P7_1_1();
-		pr2.setB(x); pr2.setC(y);
-		System.out.println("곱하기="+pr2.mul());
-		
+	    System.out.println("곱하기="+mul(x,y));
 	}
 	static double mul(double a, double b) {
 		return a*b;
 	}
 }
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/11_2.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/11_2.PNG')"><br/>
+<h3>과제 곱하기 객체</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class P1_3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("조병수-20191016-객체");
+		System.out.println("\n[객체 프로그램]");
+		double x, y;
+	    x=10;
+	    y=20;
+	    P7_1_1 pr1 = new P7_1_1();
+		pr1.b = x;
+		pr1.c = y;
+		System.out.println("곱하기="+pr1.mul());
+	}
+
+}
 class P7_1_1{
+	int a ;
+	double b, c;
+	public double mul() {
+		return b*c;
+	} 
+}
+
+</xmp>
+</div>
+<h3> 실행창 </h3>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/11_3.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/11_3.PNG')"><br/>
+<h3>과제 곱하기 자바빈</h3>
+<div class="overx1 overy1 bk1 bdcolor no-drag ">
+<xmp>
+package org.javaro.lecture;
+
+public class P1_4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("조병수-20191016-객체");
+		System.out.println("\n[자바빈 프로그램]");
+		double x, y;
+	    x=10;
+	    y=20;
+	    P7_1_2 pr2 = new P7_1_2();
+		pr2.setB(x); pr2.setC(y);
+		System.out.println("곱하기="+pr2.mul());
+	}
+
+}
+class P7_1_2{
 	int a ;
 	double b, c;
 	void setA(int x) {
@@ -87,5 +155,5 @@ class P7_1_1{
 </xmp>
 </div>
 <h3> 실행창 </h3>
-<img class="size" src="https://chobyungsoo2.github.io/java/20191016/11.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/11.PNG')"><br/>
+<img class="size" src="https://chobyungsoo2.github.io/java/20191016/11_4.PNG" alt="lobster"  onclick="doImgPop('https://chobyungsoo2.github.io/java/20191016/11_4.PNG')"><br/>
 </section></body></html>
