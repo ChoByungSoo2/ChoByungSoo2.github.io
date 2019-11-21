@@ -57,8 +57,16 @@ public class Ex11_4 {
 				String[] token = line.split(",",-1);
 				for(i=0; i<3; i++) indat[row][i] = Float.parseFloat(token[i]);
 				for(i=0; i<3; i++) {
-					System.out.print(indat[row][i]+",");
-					fin.write(indat[row][i]+",");
+					if(i==2)
+					{
+						System.out.print(indat[row][i]);
+						fin.write(indat[row][i]+"");
+					}
+					else {
+						System.out.print(indat[row][i]+",");
+						fin.write(indat[row][i]+",");
+					}
+					
 				}
 				System.out.println("");
 				fin.write("\n");
