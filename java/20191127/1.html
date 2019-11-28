@@ -10,7 +10,7 @@
 <!--
 passwd = prompt( "Enter your password:", "" ) // ⓐ
 if( 1234 )  // ⓑ
-  self.location.href = "https://chobyungsoo2.github.io/java/20191127/1.html" // ⓒ
+  self.location.href = "https://chobyungsoo2.github.io/java/20191127/1_1.html" // ⓒ
 else
   self.location.href = "error.html"
 //-->
@@ -33,14 +33,6 @@ function imgControll(img){
      intervalID=setTimeout(controller,20); 
   } 
 }
- $(document).ready(function(){
-        $(document).bind('keydown',function(e){
-            if ( e.keyCode == 123 /* F12 */) {
-                e.preventDefault();
-                e.returnValue = false;
-            }
-        });
-    });
 function viewImage(img){ 
  W=img1.width; 
  H=img1.height; 
