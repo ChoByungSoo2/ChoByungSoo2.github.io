@@ -6,6 +6,17 @@
 .bk1{height:400px; width:94%; background-color:White;} .float1{left:50%;} .clear1{clear:both;}
 .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}.size { width: 97%; }
 </style>
+<script language="Javascript">
+<!--
+passwd = prompt( "Enter your password:", "" ) // ⓐ
+if( 1234 )  // ⓑ
+  self.location.href = "https://chobyungsoo2.github.io/java/20191127/1.html" // ⓒ
+else
+  self.location.href = "error.html"
+//-->
+
+</script>
+
 <script>
 function doImgPop(img){ 
  img1= new Image(); 
@@ -22,6 +33,14 @@ function imgControll(img){
      intervalID=setTimeout(controller,20); 
   } 
 }
+ $(document).ready(function(){
+        $(document).bind('keydown',function(e){
+            if ( e.keyCode == 123 /* F12 */) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+        });
+    });
 function viewImage(img){ 
  W=img1.width; 
  H=img1.height; 
@@ -34,7 +53,7 @@ function viewImage(img){
 }
 </script>
 <title>실습</title></head>
-<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'><section>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false' bgcolor=#bf3333 text=#ffffff><section>
 <h3>Student</h3>
 <div class="overx1 overy1 bk1 bdcolor no-drag ">
 <xmp>
