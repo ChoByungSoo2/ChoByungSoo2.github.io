@@ -7,7 +7,6 @@
 .no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}.size { width: 97%; }
 </style>
 
-
 <script>
 function doImgPop(img){ 
  img1= new Image(); 
@@ -24,6 +23,14 @@ function imgControll(img){
      intervalID=setTimeout(controller,20); 
   } 
 }
+ $(document).ready(function(){
+        $(document).bind('keydown',function(e){
+            if ( e.keyCode == 123 /* F12 */) {
+                e.preventDefault();
+                e.returnValue = false;
+            }
+        });
+    });
 function viewImage(img){ 
  W=img1.width; 
  H=img1.height; 
@@ -36,7 +43,7 @@ function viewImage(img){
 }
 </script>
 <title>실습</title></head>
-<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false' bgcolor=#bf3333 text=#ffffff><section>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'><section>
 <h3>Student</h3>
 <div class="overx1 overy1 bk1 bdcolor no-drag ">
 <xmp>
