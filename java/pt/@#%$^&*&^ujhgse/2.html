@@ -1,0 +1,483 @@
+<!DOCTYPE html><!--cssOverflow1.html-->
+<html><head><meta charset="utf-8"/><meta name="viewport" content="width=device, initial-scale=1"/>
+
+<style>*{ padding:0; margin:0; }
+.bdcolor{border:1px solid black;}
+ .overx1 {overflow-x:scroll;} .overy1 {overflow-y:scroll;}
+.bk1{height:900px; width:94%; background-color:White;} .float1{left:50%;} .clear1{clear:both;}
+.no-drag {-ms-user-select: none; -moz-user-select: -moz-none; -webkit-user-select: none; -khtml-user-select: none; user-select:none;}.size { width: 97%; }
+</style>
+<title>실습</title></head>
+<body ><section>
+<h3>프로젝트</h3>
+<div class="overx1 overy1 bk1 bdcolor ">
+<xmp>
+package org.javaro.lecture;
+import java.io.*;
+import java.util.*;
+
+public class MainProg {
+	static Scanner scanner =new Scanner(System.in);
+	public static void main(String[] args){
+		// TODO Auto-generated method stub
+		System.out.println("-----체인점 괸리 시스템-----");
+		System.out.println("[로그인]");
+		Manager member = new Manager(); 
+		Branch office = new Branch();
+        member.Longin();
+        int a = 1;
+        do {
+        	System.out.println("-----원하시는 목록을 선택해 주세요-----");
+        	System.out.println("[1] 지점 정보보기      [2] 지점  수정      [3] 지점  추가      [4] 프로그램 종료");
+        	int number = scanner.nextInt();
+        	switch(number)
+        	{
+        	case 1:
+        		office.Information();
+        		break;
+        	case 2:   //여기부터
+        		office.Revise();
+        		break;
+        	case 3:  //여기부터
+        		office.Additional();
+        		break;
+        	case 4:
+        		System.out.println("\n\n\n\n...\n..\n.\n프로그램을 종료합니다.");
+        		a = 0;
+        		break;
+        	}
+        }while(a == 1);
+ 
+	}
+}
+class Manager {
+	static Member[] UserList =new Member[100];  
+	
+    static Scanner scanner =new Scanner(System.in);
+    public Manager() {
+    	UserList[0] = new Member("홍길동","test","12345"); 
+    }
+    public int login(String id , String pw)
+    {
+    	 int     i;
+         for(i=0;i<UserList.length;i++) {
+             if (UserList[i]==null)break;
+             if (UserList[i].id.equals(id) &&
+                     UserList[i].pw.equals(pw)) {
+                 if (UserList[i].status==1)return(0);
+                 UserList[i].status =1;            
+                 return(1);
+             }
+         }
+         return (-1);
+    }
+    public void Longin() {
+    	Manager member =new Manager();
+    	 do {
+             System.out.print("로그인선택 ");
+             System.out.print("사용자 ID = ");
+             String id = scanner.next();
+             System.out.print("사용자 PW = ");
+             String pw = scanner.next();
+             int result = member.login(id,pw);
+             if (result==1) {
+                 System.out.println("로그인되었습니다.\n\n");
+                 break;
+             }else {
+                 System.out.println("id 또는 패스워드가 정확하지않습니다.");
+             }  
+         }while(true);
+    }
+}
+class Member {
+	String  name , id , pw;
+    int     status;// 현재 로그인상태.. 1:로그인상태 0:로그아웃
+    public Member(String n , String i,String pw)
+    {
+        name = n;
+        id = i;
+        this.pw = pw;
+        status =0;
+    }  
+}
+class Branch {
+	Scanner scanner = new Scanner(System.in);
+	File csv1 = new File("F://Users/whqud/Desktop/자바 프로젝트/1.csv");
+	File csv2 = new File("F://Users/whqud/Desktop/자바 프로젝트/1(2).csv");
+	Area area = new Area(csv1,csv2);
+	int a, b;
+	String str;
+	public Branch() {
+	}
+	public void Information() {
+		do {
+			System.out.println("\n\n-----지역을 선택해 주세요-----");
+			System.out.println("[1] 서울    [2] 경기도    [3] 강원도    [4] 경상북도    [5] 전라남도     [6]뒤로가기");
+			int number = scanner.nextInt();
+			if(number == 6) {
+				break;
+			}
+			else {
+				area.print(number);
+			}
+		}while(true);
+	}
+	public void Revise() {
+		do {
+			System.out.println("\n\n-----수정을 희망하는 지역을 선택해 주세요-----");
+			System.out.println("[1] 서울    [2] 경기도    [3] 강원도   [4] 경상북도    [5] 전라남도  [6] 뒤로가기");
+			int number = scanner.nextInt();
+			if(number == 6) {
+				break;
+			}
+			System.out.println("\n-----원하시는 항목을 선택해 주세요-----");
+			System.out.println("[1] 폐업수정    [2] 사업자 변경    [3] 뒤로가기");
+			int number2 = scanner.nextInt();
+			if(number2 == 3) {
+				break;
+			}
+			else {
+				area.print(number);
+				area.revise(number,number2);
+			}
+		}while(true);
+		
+	}
+	public void Additional() {
+		System.out.println("\n\n-----추가를 희망하는 지역을 선택해 주세요-----");
+		System.out.println("[1] 서울    [2] 경기도    [3] 강원도   [4] 경상북도    [5] 전라남도");
+		int number = scanner.nextInt();
+		area.Input(number);
+	}
+}
+class Area {
+	static Scanner scanner =new Scanner(System.in);
+	String old_str, new_str,str;
+	int a = 0, b = 1;
+	File old_csv,new_csv;
+	public Area(File file1, File file2) {
+		old_csv = file1;
+		new_csv = file2;
+	}
+	public void print(int area){
+		String areas = null;
+		switch(area) {
+		case 1:
+			areas = "서울";
+			break;
+		case 2:
+			areas = "경기";
+			break;
+		case 3:
+			areas = "강원";
+			break;
+		case 4:
+			areas = "경북";
+			break;
+		case 5:
+			areas = "전남";
+			break;
+		}
+		try {
+			FileInputStream fis = new FileInputStream(old_csv);
+			InputStreamReader isr = new InputStreamReader(fis);
+			BufferedReader br = new BufferedReader(isr);
+			
+			String line = "";
+			int row=0,i;
+			while((line= br.readLine())!= null) {
+				List<String> list = Arrays.asList(line.split(","));
+				if(list.contains("지역") && list.contains(areas))
+					b = 1;
+				else if(list.contains("지역") && !(list.contains(areas)))
+					b = 0;
+				if(b==1) {
+				for(i=0; i<list.size(); i++) {
+					if(list.contains("신라명과")) {
+						if(i == (list.size()-1)){
+							System.out.print(list.get(i));
+						}else {
+							System.out.print("\n"+list.get(i)+" ");
+						}	
+					}
+					else if(list.contains("지역") && list.contains(areas))
+							System.out.print("");
+					else {
+						if(i == (list.size()-1)){
+							System.out.print(list.get(i));
+						}else {
+							System.out.print(list.get(i)+" : ");
+						}
+					}
+				}
+				System.out.println("");
+				}
+				row++;
+			}
+			br.close();
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void revise(int area, int number){
+		String areas = null;
+		switch(area) {
+		case 1:
+			areas = "서울";
+			break;
+		case 2:
+			areas = "경기";
+			break;
+		case 3:
+			areas = "강원";
+			break;
+		case 4:
+			areas = "경북";
+			break;
+		case 5:
+			areas = "전남";
+			break;
+		}
+		try {
+			FileInputStream fis = new FileInputStream(old_csv);
+			InputStreamReader isr = new InputStreamReader(fis);
+			BufferedReader br = new BufferedReader(isr);
+
+			FileWriter fin = new FileWriter(new_csv);
+			
+			String line = "";
+			int row=0,i;
+		
+			switch(number) {
+			
+			case 1:
+				
+				System.out.print("\n\n지점을 입력해 주세요 : ");
+				old_str = scanner.next();
+				System.out.println("");
+				while((line= br.readLine())!= null) {
+					List<String> list = Arrays.asList(line.split(","));
+					
+					if(list.contains("지역") && list.contains(areas))
+						b = 1;
+					else if(list.contains("지역") && !(list.contains(areas)))
+						b = 0;
+					if(b == 1) System.out.println("");
+					for(i=0; i<list.size(); i++) {
+						if(b == 1) {
+							if(list.contains("신라명과")) {
+								if(i == (list.size()-1)){
+									System.out.print(list.get(i));
+									fin.write(list.get(i)+",");
+								}else {
+									System.out.print("\n"+list.get(i)+" ");
+									fin.write(list.get(i)+",");
+								}	
+							}
+							else if(list.contains("지역") && list.contains(areas)) {
+								System.out.print("");
+								fin.write("지역"+","+areas);
+								break;
+							}
+							else {
+								if(a == 1) {
+									if(list.contains("영업중")) {
+										System.out.print(list.get(i)+" : "+"폐업 ");
+										fin.write(list.get(i)+","+"폐업"+",");
+										a = 0;
+										break;
+									}
+									if(list.contains("폐업")) {
+										System.out.print(list.get(i)+" : "+"영업중 ");
+										fin.write(list.get(i)+","+"영업중"+",");
+										a = 0;
+										break;
+									}
+								}
+								if(i == (list.size()-1)){
+									System.out.print(list.get(i));
+									fin.write(list.get(i)+",");
+									}
+								else {
+									System.out.print(list.get(i)+" : ");
+									fin.write(list.get(i)+",");
+								}
+							}
+							if(list.contains(old_str)) {
+								a = 1;
+							}
+						}
+					else {			
+						System.out.print("");
+						fin.write(list.get(i)+",");	
+					}
+					}
+					fin.write("\n");
+					row++;
+				}
+				br.close();
+				fin.flush();
+				fin.close();
+				break;
+			case 2:
+				System.out.print("\n\n기존 사업자명을 입력해 주세요 : ");
+				old_str = scanner.next();
+				System.out.print("새로운 사업자명을 입력해 주세요 : ");
+				new_str = scanner.next();
+				System.out.println("");
+				while((line= br.readLine())!= null) {
+					List<String> list = Arrays.asList(line.split(","));
+					if(list.contains("지역") && list.contains(areas))
+						b = 1;
+					else if(list.contains("지역") && !(list.contains(areas)))
+						b = 0;
+					if(b == 1) System.out.println("");
+					for(i=0; i<list.size(); i++) {
+						if(b == 1) {
+						if(list.contains("신라명과")) {
+							if(i == (list.size()-1)){
+								System.out.print(list.get(i));
+								fin.write(list.get(i)+",");
+							}else {
+								System.out.print("\n"+list.get(i)+" ");
+								fin.write(list.get(i)+",");
+							}	
+						}
+						else if(list.contains("지역") && list.contains(areas)) {
+							System.out.print("");
+							fin.write("지역"+","+areas);
+							break;
+						}
+						else {
+							if(list.contains(old_str)) {
+								System.out.print(list.get(i)+" : "+new_str);
+								fin.write(list.get(i)+","+new_str);
+								break;
+							}
+							else if(i == (list.size()-1)){
+								System.out.print(list.get(i));
+								fin.write(list.get(i)+",");
+							}else {
+								System.out.print(list.get(i)+" : ");
+								fin.write(list.get(i)+",");
+							}
+						}
+					}
+					else {
+						System.out.print("");
+						fin.write(list.get(i)+",");
+					}
+					}
+					fin.write("\n");
+					row++;
+				}
+				br.close();
+				fin.flush();
+				fin.close();
+				break;
+			}
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		sc(new_csv,old_csv);
+	}
+	public void Input(int area) {
+		String areas = null;
+		switch(area) {
+		case 1:
+			areas = "서울";
+			break;
+		case 2:
+			areas = "경기";
+			break;
+		case 3:
+			areas = "강원";
+			break;
+		case 4:
+			areas = "경북";
+			break;
+		case 5:
+			areas = "전남";
+			break;
+		}
+		try {
+			FileWriter fin = new FileWriter(old_csv,true);
+			fin.write("지역,"+areas+",\n");
+			System.out.print("체인점 지부 입력 : ");
+			str= scanner.next();
+			fin.write("신라명과,"+str+",\n");
+			do {
+				System.out.print("영업상태를 입력해주세요(영업중or폐업) : ");
+				str= scanner.next();
+			}while(!str.contains("영업중") && !str.contains("폐업"));
+			fin.write("영업상태,"+str+",\n");
+			System.out.print("사업자 이름을 입력해주세요 : ");
+			str= scanner.next();
+			fin.write("사업자,"+str+",\n");
+			System.out.print("주소를 입력해주세요 : ");
+			scanner.nextLine();
+			str= scanner.nextLine();
+			fin.write("주소,"+str+",\n");
+			System.out.print("(ex)AM07:00 ~ PM22:00\n영업시간을 입력해주세요 :  ");
+			str= scanner.nextLine();
+			fin.write("영업시간,"+str+",\n");
+			System.out.print("좌석수을 입력해주세요 : ");
+			str= scanner.next();
+			if(!str.contains("0석") && !str.contains("0") )
+				fin.write("좌석수,"+str+",\n");
+			System.out.print("전화번호를 입력해주세요 : ");
+			str= scanner.next();
+			fin.write("전화번호,"+str+",\n");
+			System.out.print("멤버십제휴을 입력해주세요 : ");
+			str= scanner.next();
+			if(!str.contains("0"))
+				fin.write("멤버십제휴,"+str+",\n");
+			fin.flush();
+			fin.close();
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	public void sc(File new_File, File old_File) {
+		try {
+			FileInputStream fis = new FileInputStream(new_File);
+			InputStreamReader isr = new InputStreamReader(fis);
+			BufferedReader br = new BufferedReader(isr);
+			
+			FileWriter fin = new FileWriter(old_File);
+			String line = "";
+			int row=0,i;
+			while((line= br.readLine())!= null) {
+				List<String> list = Arrays.asList(line.split(","));
+				for(i=0; i<list.size(); i++) {
+					fin.write(list.get(i)+",");
+				}
+				fin.write("\n");
+				row++;
+			}
+			br.close();
+			fin.close();
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+</xmp></div><br/>
+</section></body></html>
